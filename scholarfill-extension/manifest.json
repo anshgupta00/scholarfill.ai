@@ -1,0 +1,29 @@
+{
+  "manifest_version": 3,
+  "name": "scholarfill.ai Helper",
+  "version": "1.0.0",
+  "description": "Scrape and auto-fill Google Forms directly from your browser.",
+  "permissions": [
+    "activeTab",
+    "storage",
+    "scripting"
+  ],
+  "host_permissions": [
+    "http://localhost:5173/*",
+    "http://localhost:8000/*"
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "http://localhost:5173/*",
+        "*://docs.google.com/forms/*",
+        "*://*.google.com/forms/*"
+      ],
+      "js": ["content.js"],
+      "run_at": "document_end"
+    }
+  ]
+}
